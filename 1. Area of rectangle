@@ -1,0 +1,63 @@
+# include <stdio.h>
+# include <math.h>
+typedef struct point
+{
+float x;
+float y;
+
+}point;
+
+point input ();
+float distance (point p1,point p2);
+float cal_area (float d1,float d2,float d3);
+void output (float area);
+
+int main ()
+{
+point p1,p2,p3;
+printf ("Enter the first coordinates\n");
+p1 = input ();
+printf ("Enter second coordinates\n");
+p2 = input ();
+printf ("Enter the third coordinates\n");
+p3 = input ();
+float d1 = distance (p1,p2);
+float d2 = distance (p2,p3);
+float d3 = distance (p3,p1);
+ float area = cal_area (d1,d2,d3);
+output (area);
+}
+
+
+
+point input ()
+{
+point p;
+
+scanf ("%f %f",&p.x,&p.y);
+return p;
+}
+
+float distance (point p1,point p2)
+{
+return sqrt ((p2.x -p1.x) * (p2.x - p1.x) + (p2.y-p1.y) * (p2.y -p1.y));
+}
+
+float cal_area (float d1,float d2,float d3)
+{
+if(d1>d2 && d1>d3)
+return d2*d3;
+else if (d2>d1 && d2>d3)
+return d3*d1;
+else
+return d1*d2;
+}
+
+void output (float area)
+{
+printf ("The area of rectangle %f",area);
+}
+
+
+
+
