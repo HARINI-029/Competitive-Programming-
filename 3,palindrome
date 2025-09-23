@@ -1,18 +1,43 @@
-# include <stdio.h>
-int main ()
-{
-int n,len;
-char a[20];
-printf ("enter the number of strings\n");
-scanf ("%d"&n);
-for (int i =0;i<n;i++)
-{
-printf ("enter the length of %d string\n");
-scanf ("%d",&len);
-a[len];
-printf ("enter the character\n");
-for (int i =0;i<len;i++)
-{
-scanf ("%s",&a[i]);
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+// Check if substring str[l..r] is palindrome
+bool isPalindrome(char str[], int l, int r) {
+    while (l < r) {
+        if (str[l] != str[r]) return false;
+        l++;
+        r--;
+    }
+    return true;
 }
 
+void palindromeTrawler(char str[], int len) {
+    //printf("%s\n", str);   // print the string first
+
+    for (int i = 0; i < len; i++) {
+        for (int j = i + 2; j < len; j++) {   // length >= 3
+            if (isPalindrome(str, i, j)) {
+                printf(" %d ", i + 1);        // leading space + position
+                for (int k = i; k <= j; k++) {
+                    putchar(str[k]);
+                }
+                putchar('\n');
+            }
+        }
+    }
+}
+
+int main() {
+    int n, len;
+    char str[1000];
+
+    scanf("%d", &n);   // number of strings
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &len);
+        scanf("%s", str);
+        palindromeTrawler(str, len);
+    }
+
+    return 0;
+}
