@@ -5,14 +5,17 @@ int main ()
 int n;
 printf ("Enter the number of instances \n");
 scanf ("%d",&n);
+for (int i =0;i<n;i++)
+{
 int score;
 
 printf ("enter the score\n");
 scanf ("%d",&score);
 
  int ways = cal_ways (score);
-printf ("%d",ways);
+printf (" %d ways",ways);
 
+}
 }
 
 int  cal_ways (int score)
