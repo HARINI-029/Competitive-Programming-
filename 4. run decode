@@ -3,17 +3,17 @@
 void decode(int len, int a[]) {
     int i = 0;
     while (i < len) {
-        if (a[i] == 0) { // start of a run
+        if (a[i] == 0) { 
             int run_len = a[i + 1];
             int value = a[i + 2];
-            if (run_len == 0) { // single 0
+            if (run_len == 0) {
                 printf("0 ");
             } else {
                 for (int j = 0; j < run_len; j++) {
                     printf("%d ", value);
                 }
             }
-            i += 3; // skip the run info
+            i += 3; 
         } else {
             printf("%d ", a[i]);
             i++;
@@ -38,7 +38,6 @@ int main() {
         printf("Enter the length of sequence: ");
         scanf("%d", &len);
 
-        // Call input function
         input_sequence(len, a);
 
         printf("Decoded sequence: ");
