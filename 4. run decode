@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void decode(int len, int a[]) {
+    int i = 0;
+    while (i < len) {
+        if (a[i] == 0) { // start of a run
+            int run_len = a[i + 1];
+            int value = a[i + 2];
+            if (run_len == 0) { // single 0
+                printf("0 ");
+            } else {
+                for (int j = 0; j < run_len; j++) {
+                    printf("%d ", value);
+                }
+            }
+            i += 3; // skip the run info
+        } else {
+            printf("%d ", a[i]);
+            i++;
+        }
+    }
+    printf("\n");
+}
+
+void input_sequence(int len, int a[]) {
+    for (int i = 0; i < len; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+}
+
+int main() {
+    int n, len, a[100];
+    printf("Enter the number of instances: ");
+    scanf("%d", &n);
+
+    for (int seq = 0; seq < n; seq++) {
+        printf("Enter the length of sequence: ");
+        scanf("%d", &len);
+
+        // Call input function
+        input_sequence(len, a);
+
+        printf("Decoded sequence: ");
+        decode(len, a);
+        printf("\n");
+    }
+
+    return 0;
+}
