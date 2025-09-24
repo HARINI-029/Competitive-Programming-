@@ -1,0 +1,36 @@
+# include <stdio.h>
+int cal_ways(int score);
+int main ()
+{
+int n;
+printf ("Enter the number of instances \n");
+scanf ("%d",&n);
+int score;
+
+printf ("enter the score\n");
+scanf ("%d",&score);
+
+ int ways = cal_ways (score);
+printf ("%d",ways);
+
+}
+
+int  cal_ways (int score)
+{
+if (score==0||score==1)
+{
+return 1;
+}
+else if (score == 2)
+{
+    return 2;
+}
+else if (score<0)
+
+{
+    printf ("invalid\n");
+}
+else
+return cal_ways(score - 1)+ cal_ways (score - 2)+ cal_ways (score - 3);
+}
+
